@@ -1,0 +1,10 @@
+name: Planecart
+main: kr.kkiro.projects.planecart.bukkit.Planecart
+version: 0.0.1
+depend: [BKCommonLib]
+commands:
+  airplane:
+    description: Airplane
+    usage: "Usage: /<command>"
+    aliases: [air,plane]
+metrics: true
