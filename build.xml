@@ -1,6 +1,7 @@
 <project name="Planecart" default="dist" basedir=".">
 	<property name="pluginname" value="Planecart"/>
 	<property name="bukkit.jar" location="lib/bukkit.jar"/>
+	<property name="BKCommonLib.jar" location="lib/BKCommonLib.jar"/>
 	
 	<property name="src" location="src"/>
 	<property name="bin" location="bin"/>
@@ -14,6 +15,7 @@
 	  <javac srcdir="${src}/main/java" destdir="${bin}" includeantruntime="false">
 	    <classpath>
 	      <pathelement location="${bukkit.jar}"/>
+	    	<pathelement location="${BKCommonLib.jar}"/>
 	    </classpath>
 	  </javac>
 	</target>
