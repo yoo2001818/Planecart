@@ -1,4 +1,4 @@
-<project name="Planecart" default="install" basedir=".">
+<project name="Planecart" default="dist" basedir=".">
 	<property name="pluginname" value="Planecart"/>
 	<property name="bukkit.jar" location="lib/bukkit.jar"/>
 	<property name="BKCommonLib.jar" location="lib/BKCommonLib.jar"/>
@@ -14,7 +14,7 @@
 	</target>
 
 	<target name="compile" depends="init">
-	  <javac srcdir="${src}" destdir="${bin}" includeantruntime="false">
+	  <javac srcdir="${src}" destdir="${bin}" includeantruntime="false" debug="on" debuglevel="lines,vars,source">
 	    <classpath>
 	      <pathelement location="${bukkit.jar}"/>
 	    	<pathelement location="${BKCommonLib.jar}"/>
@@ -33,5 +33,10 @@
   <target name="install" depends="dist">
   	<copy file="${dist}/${pluginname}.jar" todir="${plugins}"/>
   </target>
+	
+	<target name="clean">
+	  <delete dir="${bin}"/>
+		<delete dir="${dist}"/>
+	</target>
 	
 </project>

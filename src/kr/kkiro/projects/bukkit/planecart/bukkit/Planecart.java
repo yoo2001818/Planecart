@@ -1,22 +1,30 @@
 package kr.kkiro.projects.bukkit.planecart.bukkit;
 
+import static kr.kkiro.projects.bukkit.planecart.utils.I18n._;
+
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.persistence.PersistenceException;
 
+import kr.kkiro.projects.bukkit.planecart.commands.CommandHandler;
 import kr.kkiro.projects.bukkit.planecart.database.AirportDB;
 import kr.kkiro.projects.bukkit.planecart.database.Database;
-import kr.kkiro.projects.bukkit.planecart.locale.DebugLocale;
+import kr.kkiro.projects.bukkit.planecart.utils.I18n;
 
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 
 import com.bergerkiller.bukkit.common.Common;
 import com.bergerkiller.bukkit.common.PluginBase;
 
 public class Planecart extends PluginBase {
-	
-	private static Planecart instance;
 
+  public FileConfiguration config;
+  public I18n i18n;
+  public Logger logger;
+  public CommandHandler commander;
+  
 	@Override
 	public void disable() {
 		// TODO Auto-generated method stub
@@ -25,14 +33,18 @@ public class Planecart extends PluginBase {
 
 	@Override
 	public void enable() {
-		instance = this;
-
+	  logger = this.getLogger();
+	  // Read configuration first!
+	  config = this.getConfig();
+	  i18n = new I18n(this);
+	  i18n.setCurrentLocale(config.getString("general.language"));
+	  commander = new CommandHandler(this);
 	}
 	
 	@Override
 	public boolean command(CommandSender arg0, String arg1, String[] arg2) {
-		// TODO Auto-generated method stub
-		return false;
+	  commander.processCommand(arg0, arg1, arg2);
+		return true;
 	}
 
 	@Override
@@ -49,25 +61,21 @@ public class Planecart extends PluginBase {
 		try {
 			this.getDatabase().find(AirportDB.class).findRowCount();
 		} catch (PersistenceException ex) {
-			info(DebugLocale.INSTALL_DDL.get());
+			info(_("installDDL"));
 			this.installDDL();
 		}
 	}
 	
-	public static Planecart getInstance() {
-		return instance;
-	}
-	
-	public static void info(String message) {
-		getInstance().getLogger().info(message);
+	public void info(String message) {
+		getLogger().info(message);
 	}
 
-	public static void warning(String message) {
-		getInstance().getLogger().warning(message);
+	public void warning(String message) {
+		getLogger().warning(message);
 	}
 
-	public static void severe(String message) {
-		getInstance().getLogger().severe(message);
+	public void severe(String message) {
+		getLogger().severe(message);
 	}
 	
 }
