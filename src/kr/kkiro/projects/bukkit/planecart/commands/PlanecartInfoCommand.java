@@ -2,12 +2,10 @@ package kr.kkiro.projects.bukkit.planecart.commands;
 
 //TODO:: /planecart
 
-import kr.kkiro.projects.bukkit.planecart.actions.plane.PlaneCraftAction;
-import kr.kkiro.projects.bukkit.planecart.exceptions.InvaildBlockException;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
 import static kr.kkiro.projects.bukkit.planecart.utils.I18n._;
+import kr.kkiro.projects.bukkit.planecart.bukkit.Planecart;
+
+import org.bukkit.command.CommandSender;
 
 public class PlanecartInfoCommand extends Command {
 
@@ -27,8 +25,8 @@ public class PlanecartInfoCommand extends Command {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, String[] args) {
-        sender.sendMessage("Planecart");
+    public boolean onCommand(Planecart plugin, CommandSender sender, String[] args) {
+        sender.sendMessage("Planecart ver "+plugin.getVersion());
          return true;
     }
 

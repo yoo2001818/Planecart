@@ -1,13 +1,13 @@
 package kr.kkiro.projects.bukkit.planecart.commands;
 
-import java.lang.reflect.Array;
+import static kr.kkiro.projects.bukkit.planecart.utils.I18n._;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bukkit.command.CommandSender;
-
 import kr.kkiro.projects.bukkit.planecart.bukkit.Planecart;
-import static kr.kkiro.projects.bukkit.planecart.utils.I18n._;
+
+import org.bukkit.command.CommandSender;
 
 public class CommandHandler {
 	
@@ -28,7 +28,7 @@ public class CommandHandler {
 	public void processCommand(CommandSender arg0, String arg1, String[] arg2) {
 	  String issuedCommand = arg1;
 	  if(arg2.length != 0) issuedCommand = arg1 + " " + arg2[0];
-	  Command command = list.get(issuedCommand);
+	  Command command = list.get(issuedCommand.toLowerCase());
 	  if(command == null) {
 	    arg0.sendMessage(_("commandInvaild"));
 	    return;
@@ -37,7 +37,7 @@ public class CommandHandler {
 	  for(int i = 1; i < arg2.length; ++i) {
 	    args[i-1] = arg2[i];
 	  }
-	  command.onCommand(arg0, args);
+	  command.onCommand(plugin, arg0, args);
 	}
 	
 

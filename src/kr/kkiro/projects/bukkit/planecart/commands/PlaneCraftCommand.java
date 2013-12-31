@@ -2,6 +2,7 @@ package kr.kkiro.projects.bukkit.planecart.commands;
 
 import static kr.kkiro.projects.bukkit.planecart.utils.I18n._;
 import kr.kkiro.projects.bukkit.planecart.actions.plane.PlaneCraftAction;
+import kr.kkiro.projects.bukkit.planecart.bukkit.Planecart;
 import kr.kkiro.projects.bukkit.planecart.exceptions.InvaildBlockException;
 
 import org.bukkit.command.CommandSender;
@@ -25,7 +26,7 @@ public class PlaneCraftCommand extends Command {
 	}
 
 	@Override
-	public boolean onCommand(CommandSender sender, String[] args) {
+	public boolean onCommand(Planecart plugin, CommandSender sender, String[] args) {
 		if(sender instanceof Player) {
 		  PlaneCraftAction action = new PlaneCraftAction(((Player)sender).getTargetBlock(null, 32));
 		  action.issuer = (Player)sender;
