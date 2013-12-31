@@ -7,4 +7,7 @@ commands:
   plane:
     description: Plane related commands.
     usage: "Usage: /<command>"
+  planecart:
+    description: Planecart main command.
+    usage: "Usage: /<command>"
 metrics: true

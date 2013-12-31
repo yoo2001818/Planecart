@@ -2,8 +2,7 @@ package kr.kkiro.projects.bukkit.planecart.commands;
 
 import static kr.kkiro.projects.bukkit.planecart.utils.I18n._;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import kr.kkiro.projects.bukkit.planecart.bukkit.Planecart;
 
@@ -19,6 +18,8 @@ public class CommandHandler {
 		list = new HashMap<String, Command>();
 		
 		registerCommand(new PlaneCraftCommand());
+        registerCommand(new PlanecartHelpCommand());
+        registerCommand(new PlanecartInfoCommand());
 	}
 	
 	public void registerCommand(Command command) {
@@ -39,6 +40,12 @@ public class CommandHandler {
 	  }
 	  command.onCommand(plugin, arg0, args);
 	}
+
+    public List<Command> getCommands() {
+        ArrayList<Command> l = new ArrayList<Command>();
+        l.addAll(list.values());
+        return l;
+    }
 	
 
 }
