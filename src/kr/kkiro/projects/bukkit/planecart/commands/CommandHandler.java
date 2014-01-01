@@ -20,6 +20,8 @@ public class CommandHandler {
 		registerCommand(new PlaneCraftCommand());
         registerCommand(new PlanecartHelpCommand());
         registerCommand(new PlanecartInfoCommand());
+        registerCommand(new PlanecartPlaneCommand());
+        registerCommand(new PlanecartPlaneHelpCommand());
 	}
 	
 	public void registerCommand(Command command) {
