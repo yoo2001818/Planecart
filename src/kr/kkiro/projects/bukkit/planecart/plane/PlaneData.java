@@ -1,20 +1,20 @@
 package kr.kkiro.projects.bukkit.planecart.plane;
 
-import com.bergerkiller.bukkit.common.entity.type.CommonMinecart;
+import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.Minecart;
+import org.bukkit.entity.EntityType;
 
 public class PlaneData {
-  public Class<? extends CommonMinecart<? extends Minecart>> cartClass;
+  public EntityType cartClass;
   public Material block;
   public PlaneEntityType type;
   public PlaneUpgrade upgrade;
+  public Location originalLocation;
 
   public PlaneData(PlaneEntityType type) {
     this.type = type;
     this.block = type.getDefaultMaterial();
     this.cartClass = type.getEntityClass();
-    //TODO i have to do this
   }
 
 }

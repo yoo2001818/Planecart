@@ -10,37 +10,38 @@ import org.bukkit.entity.Player;
 
 public class PlaneCraftCommand extends Command {
 
-	@Override
-	public String getCommand() {
-		return "plane craft";
-	}
+  @Override
+  public String getCommand() {
+    return "plane craft";
+  }
 
-	@Override
-	public String getUsage() {
-		return "";
-	}
+  @Override
+  public String getUsage() {
+    return "";
+  }
 
-	@Override
-	public String getHelp() {
-	  return _("commandPlaneCraftHelp");
-	}
+  @Override
+  public String getHelp() {
+    return _("commandPlaneCraftHelp");
+  }
 
-	@Override
-	public boolean onCommand(Planecart plugin, CommandSender sender, String[] args) {
-		if(sender instanceof Player) {
-		  PlaneCraftAction action = new PlaneCraftAction(((Player)sender).getTargetBlock(null, 32));
-		  action.issuer = (Player)sender;
-		  action.cartifiy = args.length != 0;
-		  try {
-		    action.onExecute();
-		  } catch (InvaildBlockException e) {
-		    sender.sendMessage(_("actionPlaneCraftInvaild"));
-		    return true;
-		  }
-		} else {
-		  sender.sendMessage(_("onlyIngame"));
-		}
+  @Override
+  public boolean onCommand(Planecart plugin, CommandSender sender, String[] args) {
+    if (sender instanceof Player) {
+      PlaneCraftAction action = new PlaneCraftAction(
+          ((Player) sender).getTargetBlock(null, 32));
+      action.issuer = (Player) sender;
+      action.cartifiy = args.length != 0;
+      try {
+        action.onExecute();
+      } catch (InvaildBlockException e) {
+        sender.sendMessage(_("actionPlaneCraftInvaild"));
+        return true;
+      }
+    } else {
+      sender.sendMessage(_("onlyIngame"));
+    }
     return true;
-	}
+  }
 
 }

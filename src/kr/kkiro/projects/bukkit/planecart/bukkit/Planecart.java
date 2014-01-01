@@ -24,58 +24,58 @@ public class Planecart extends PluginBase {
   public I18n i18n;
   public Logger logger;
   public CommandHandler commander;
-  
-	@Override
-	public void disable() {
-		// TODO Auto-generated method stub
 
-	}
+  @Override
+  public void disable() {
+    // TODO Auto-generated method stub
 
-	@Override
-	public void enable() {
-	  logger = this.getLogger();
-	  // Read configuration first!
-	  config = this.getConfig();
-	  i18n = new I18n(this);
-	  i18n.setCurrentLocale(config.getString("general.language"));
-	  commander = new CommandHandler(this);
-	}
-	
-	@Override
-	public boolean command(CommandSender arg0, String arg1, String[] arg2) {
-	  commander.processCommand(arg0, arg1, arg2);
-		return true;
-	}
+  }
 
-	@Override
-	public int getMinimumLibVersion() {
-		return Common.VERSION;
-	}
-	
-	@Override
-	public List<Class<?>> getDatabaseClasses() {
-		return Database.getDatabaseClasses();
-	}
-	
-	public void installDatabase() {
-		try {
-			this.getDatabase().find(AirportDB.class).findRowCount();
-		} catch (PersistenceException ex) {
-			info(_("installDDL"));
-			this.installDDL();
-		}
-	}
-	
-	public void info(String message) {
-		getLogger().info(message);
-	}
+  @Override
+  public void enable() {
+    logger = this.getLogger();
+    // Read configuration first!
+    config = this.getConfig();
+    i18n = new I18n(this);
+    i18n.setCurrentLocale(config.getString("general.language"));
+    commander = new CommandHandler(this);
+  }
 
-	public void warning(String message) {
-		getLogger().warning(message);
-	}
+  @Override
+  public boolean command(CommandSender arg0, String arg1, String[] arg2) {
+    commander.processCommand(arg0, arg1, arg2);
+    return true;
+  }
 
-	public void severe(String message) {
-		getLogger().severe(message);
-	}
-	
+  @Override
+  public int getMinimumLibVersion() {
+    return Common.VERSION;
+  }
+
+  @Override
+  public List<Class<?>> getDatabaseClasses() {
+    return Database.getDatabaseClasses();
+  }
+
+  public void installDatabase() {
+    try {
+      this.getDatabase().find(AirportDB.class).findRowCount();
+    } catch (PersistenceException ex) {
+      info(_("installDDL"));
+      this.installDDL();
+    }
+  }
+
+  public void info(String message) {
+    getLogger().info(message);
+  }
+
+  public void warning(String message) {
+    getLogger().warning(message);
+  }
+
+  public void severe(String message) {
+    getLogger().severe(message);
+  }
+
 }

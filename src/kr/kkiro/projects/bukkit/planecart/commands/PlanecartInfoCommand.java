@@ -9,25 +9,26 @@ import org.bukkit.command.CommandSender;
 
 public class PlanecartInfoCommand extends Command {
 
-    @Override
-    public String getCommand() {
-        return "planecart";
-    }
+  @Override
+  public String getCommand() {
+    return "planecart";
+  }
 
-    @Override
-    public String getUsage() {
-        return "";
-    }
+  @Override
+  public String getUsage() {
+    return "";
+  }
 
-    @Override
-    public String getHelp() {
-        return _("commandPlanecartInfo");
-    }
+  @Override
+  public String getHelp() {
+    return _("commandPlanecartInfo");
+  }
 
-    @Override
-    public boolean onCommand(Planecart plugin, CommandSender sender, String[] args) {
-        sender.sendMessage("Planecart ver "+plugin.getVersion());
-         return true;
-    }
+  @Override
+  public boolean onCommand(Planecart plugin, CommandSender sender, String[] args) {
+    // TODO use i18n
+    sender.sendMessage("Planecart ver " + plugin.getVersion());
+    return true;
+  }
 
 }

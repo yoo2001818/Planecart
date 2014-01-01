@@ -1,40 +1,37 @@
 package kr.kkiro.projects.bukkit.planecart.plane;
 
 import org.bukkit.Material;
-import org.bukkit.entity.Minecart;
-
-import com.bergerkiller.bukkit.common.entity.type.CommonMinecart;
-import com.bergerkiller.bukkit.common.entity.type.CommonMinecartChest;
-import com.bergerkiller.bukkit.common.entity.type.CommonMinecartFurnace;
-import com.bergerkiller.bukkit.common.entity.type.CommonMinecartRideable;
+import org.bukkit.entity.EntityType;
 
 public enum PlaneEntityType {
-  PASSENGER(Material.AIR, CommonMinecartRideable.class, false),
-  CHEST(Material.CHEST, CommonMinecartChest.class, false),
-  ENGINE(Material.FURNACE, CommonMinecartFurnace.class, true),
-  COCKPIT(Material.WOOD_STEP, CommonMinecartRideable.class, false),
-  TANK(Material.WORKBENCH, CommonMinecartFurnace.class, true),
-  DECORATION(Material.AIR, CommonMinecartFurnace.class, false);
+  PASSENGER(Material.AIR, EntityType.MINECART, false), CHEST(
+      Material.CHEST, EntityType.MINECART_CHEST, false), ENGINE(
+      Material.FURNACE, EntityType.MINECART_FURNACE, true), COCKPIT(
+      Material.WOOD_STEP, EntityType.MINECART, false), TANK(
+      Material.WORKBENCH, EntityType.MINECART_FURNACE, true), DECORATION(
+      null, EntityType.MINECART_FURNACE, false);
 
   private Material defaultMaterial;
-  private Class<? extends CommonMinecart<? extends Minecart>> entity;
+  private EntityType entity;
   private boolean acceptUpgrades;
-  
-  private PlaneEntityType(Material defaultMaterial, Class<? extends CommonMinecart<? extends Minecart>> entity, Boolean acceptUpgrades) {
+
+  private PlaneEntityType(Material defaultMaterial,
+      EntityType entity,
+      Boolean acceptUpgrades) {
     this.defaultMaterial = defaultMaterial;
     this.entity = entity;
     this.acceptUpgrades = acceptUpgrades;
   }
-  
+
   public Material getDefaultMaterial() {
     return defaultMaterial;
   }
-  
-  public Class<? extends CommonMinecart<? extends Minecart>> getEntityClass() {
+
+  public EntityType getEntityClass() {
     return entity;
   }
 
   public boolean doAcceptUpgrades() {
-      return acceptUpgrades;
+    return acceptUpgrades;
   }
 }

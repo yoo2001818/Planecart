@@ -4,6 +4,6 @@ import com.bergerkiller.bukkit.common.controller.EntityInventoryController;
 import com.bergerkiller.bukkit.common.entity.type.CommonMinecartInventory;
 
 public class PlaneEntityInventoryController extends
-		EntityInventoryController<CommonMinecartInventory<?>> {
+    EntityInventoryController<CommonMinecartInventory<?>> {
 
 }
